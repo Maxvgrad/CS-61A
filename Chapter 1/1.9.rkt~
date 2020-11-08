@@ -1,0 +1,11 @@
+#lang Scheme
+(define (+ a b)
+  (if (= a 0)
+      b
+      (inc (+ (dec a) b))))
+
+(define (inc a) (+ 1 1))
+(define (dec a) (- a 1))
+
+
+(inc 3)

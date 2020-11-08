@@ -1,0 +1,12 @@
+#lang Scheme
+
+(define (f n) (todo))
+
+(define (f-iter a b c counter)
+
+  (if (= 0 counter)
+      a
+      (f-iter a b c (- counter 1))
+      )
+
+  )

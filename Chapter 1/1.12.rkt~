@@ -1,0 +1,25 @@
+#lang Scheme
+
+(define (pascals-triangle rows)
+   (define (next-row row)
+     (define (next-row-inner upRow downRow)
+       (if (null? upRow) downRow
+           (next-row-inner )
+           )
+       )
+
+
+     ()
+     )
+
+
+  (define (pascals-triangle-inner cur n row)
+    (if (=> cur n) row
+
+        
+        
+        )
+    )
+
+  ()
+  )
