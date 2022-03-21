@@ -1,0 +1,73 @@
+#lang Scheme
+
+(define (make-mobile left right)
+  (list left right))
+
+(define (make-branch length structure)
+  (list length structure))
+
+; a
+
+(define (left-branch m)
+  (car m)
+)
+
+(define (right-branch m)
+  (car (cdr m))
+)
+
+(define (branch-length br)
+  (car br)
+)
+
+(define (branch-structure br)
+  (car (cdr br))
+)
+
+(define (mibile? m) (list? m))
+
+; b
+
+(define (traverse-tree t acc-operator br-operator leaf?)
+  (define (traverse-branch b)
+    (let ((s (branch-structure b)))
+    (if (leaf? s) (br-operator b) (traverse-tree s)))
+  )
+  (let ((lb (left-branch t)) (rb (right-branch t)))
+    (acc-operator (traverse-branch lb) (traverse-branch rb)))
+)
+
+(define (total-weight m)
+  (traverse-tree m (lambda (l r) (+ l r)) (lambda (b) (branch-structure b)) (lambda (s) (not (mobile? s))))
+  )
+
+
+
+; (define b1 (make-branch 2 10))
+; (define b2 (make-branch 2 20))
+; (define m1 (make-mobile b1 b2))
+; (total-weight m1)
+
+
+; c
+
+(define (traverse-tree t acc-operator br-operator leaf?)
+  (define (traverse-branch b)
+    (let ((s (branch-structure b)))
+    (if (leaf? s) (br-operator b) (traverse-tree s)))
+  )
+  (let ((lb (left-branch t)) (rb (right-branch t)))
+    (acc-operator (traverse-branch lb) (traverse-branch rb)))
+)
+
+(define (balanced? m)
+  (traverse-tree m (lambda (l r) (AND l r)) (lambda (b) (branch-structure b)) (lambda (s) (not (list? s))))
+  )
+
+
+
+
+
+
+
+
